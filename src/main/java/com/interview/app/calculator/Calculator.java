@@ -2,12 +2,11 @@ package com.interview.app.calculator;
 
 import com.interview.app.calculator.operation.Operation;
 import com.interview.app.calculator.operation.OperationProvider;
+import com.interview.app.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Component
 class Calculator {
@@ -27,7 +26,7 @@ class Calculator {
         LinkedList<Double> valueStack = new LinkedList<>();
 
         for (String expressionPart : splittedExpression) {
-            if (isNumber(expressionPart)) {
+            if (StringUtils.isNumber(expressionPart)) {
                 valueStack.push(Double.valueOf(expressionPart));
             } else if (operationProvider.isSupportedOpt(expressionPart.charAt(0))) {
                 char operatorSymbol = expressionPart.charAt(0);
@@ -95,11 +94,4 @@ class Calculator {
         Operation operation2 = operationProvider.getOperation(secondOperator);
         return operation1.getPriority().getValue() <= operation2.getPriority().getValue();
     }
-
-    private boolean isNumber(String input) {
-        Pattern p = Pattern.compile("\\d+");
-        Matcher m = p.matcher(input);
-        return m.find();
-    }
-
 }

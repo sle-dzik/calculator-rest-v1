@@ -1,6 +1,6 @@
 package com.interview.app.calculator.operation;
 
-public class PlusOperation implements Operation {
+class PlusOperation implements Operation {
 
     @Override
     public OperationPriority getPriority() {

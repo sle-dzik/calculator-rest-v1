@@ -19,7 +19,7 @@ class CalculatorControllerAdviceTest {
     private final CalculatorControllerAdvice calculatorControllerAdvice = new CalculatorControllerAdvice();
 
     @Test
-    void handleIllegalArgumentException_ShouldReturnExceptionMessage() {
+    void handleIllegalArgumentExceptionShouldReturnExceptionMessage() {
         //given
         String exceptionMessage = "Wrong data";
         IllegalArgumentException exception = new IllegalArgumentException(exceptionMessage);
@@ -39,7 +39,7 @@ class CalculatorControllerAdviceTest {
     }
 
     @Test
-    void handleArithmeticException_ShouldReturnExceptionMessage() {
+    void handleArithmeticExceptionShouldReturnExceptionMessage() {
         //given
         String exceptionMessage = "Wrong data";
         ArithmeticException exception = new ArithmeticException(exceptionMessage);
@@ -59,7 +59,7 @@ class CalculatorControllerAdviceTest {
     }
 
     @Test
-    void handleValidationException_ShouldReturnDefMessageWhenNoConstraints() {
+    void handleValidationExceptionShouldReturnDefMessageWhenNoConstraints() {
         //given
         ConstraintViolationException exception = new ConstraintViolationException(Set.of());
 
@@ -78,7 +78,7 @@ class CalculatorControllerAdviceTest {
     }
 
     @Test
-    void handleValidationException_ShouldReturnAnyOfConstraintMessage() {
+    void handleValidationExceptionShouldReturnAnyOfConstraintMessage() {
         //given
         String exceptionMessage1 = "Wrong parameter 1";
         ConstraintViolation<String> constraintViolation1 = mock(ConstraintViolation.class);

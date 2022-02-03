@@ -30,7 +30,7 @@ class CalculatorControllerTest {
     }
 
     @Test
-    void calculate_ShouldReturnDecodedString() {
+    void calculateShouldReturnDecodedString() {
         //given
         String encodedQuery = "encodedQuery";
         String decodedQuery = "decodedQuery";

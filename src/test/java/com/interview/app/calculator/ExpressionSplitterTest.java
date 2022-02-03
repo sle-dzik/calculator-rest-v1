@@ -26,7 +26,7 @@ class ExpressionSplitterTest {
 
     @ParameterizedTest
     @MethodSource("provideExpressions")
-    void split_ShouldReturnSplittedExpresion(String input, List<String> expected) {
+    void splitShouldReturnSplittedExpresion(String input, List<String> expected) {
         //when
         List<String> actual = expressionSplitter.split(input);
         //then

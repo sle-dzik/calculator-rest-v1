@@ -48,16 +48,16 @@ class OperationProviderTest {
 
     @ParameterizedTest
     @MethodSource("testCasesForSupportedOperations")
-    void getOperation_ShouldReturnExpectedOperationClassInstance(Character operationSymbol, Class expected) {
+    void getOperationShouldReturnExpectedOperationClassInstance(Character operationSymbol, Class<Operation> expected) {
         //when
         Operation actual = operationProvider.getOperation(operationSymbol);
         //then
-        Class actualOperationClass = Optional.ofNullable(actual).map(Operation::getClass).orElse(null);
+        Class<? extends Operation> actualOperationClass = Optional.ofNullable(actual).map(Operation::getClass).orElse(null);
         assertThat(actualOperationClass).isEqualTo(expected);
     }
 
     @Test
-    void getOperation_ShouldReturnUnsupportedExceptionForUnknownOperation() {
+    void getOperationShouldReturnUnsupportedExceptionForUnknownOperation() {
         //given
         char unsupportedOperation = '(';
         //when

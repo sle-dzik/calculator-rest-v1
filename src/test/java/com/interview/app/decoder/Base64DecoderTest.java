@@ -11,7 +11,7 @@ class Base64DecoderTest {
     private final Decoder decoder = new Base64Decoder();
 
     @Test
-    void decode_ShouldReturnIllegalArgumentExceptionWhenNullString() {
+    void decodeShouldReturnIllegalArgumentExceptionWhenNullString() {
         //given
         String input = null;
 
@@ -21,7 +21,7 @@ class Base64DecoderTest {
     }
 
     @Test
-    void decode_ShouldReturnIllegalArgumentExceptionWhenIncorrectBase64() {
+    void decodeShouldReturnIllegalArgumentExceptionWhenIncorrectBase64() {
         //given
         String input = "123==";
 
@@ -31,7 +31,7 @@ class Base64DecoderTest {
     }
 
     @Test
-    void decode_ShouldReturnSuccessfullyDecodeBase64() {
+    void decodeShouldReturnSuccessfullyDecodeBase64() {
         //given
         String input = "KDIzLygzKjMpKQ==";
         String expected = "(23/(3*3))";
