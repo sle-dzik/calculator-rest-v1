@@ -3,11 +3,13 @@ package com.interview.app.calculator;
 import com.interview.app.calculator.operation.Operation;
 import com.interview.app.calculator.operation.OperationProvider;
 import com.interview.app.utils.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Slf4j
 @Component
 class Calculator {
 
@@ -26,6 +28,7 @@ class Calculator {
         LinkedList<Double> valueStack = new LinkedList<>();
 
         for (String expressionPart : splittedExpression) {
+            log.debug("Expression element:[{}], operatorStack:{}, valueStack:{}", expressionPart, operatorStack, valueStack);
             if (StringUtils.isNumber(expressionPart)) {
                 valueStack.push(Double.valueOf(expressionPart));
             } else if (operationProvider.isSupportedOpt(expressionPart.charAt(0))) {
@@ -80,6 +83,7 @@ class Calculator {
     private Double calculateValue(Character operator, LinkedList<Double> valueStack) {
         Double secondValue = valueStack.pop();
         Double firstValue = valueStack.pop();
+        log.debug("Calculate {} {} {}", firstValue, operator, secondValue);
         return operationProvider.getOperation(operator).calculate(firstValue, secondValue);
     }
 
