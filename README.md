@@ -57,6 +57,11 @@ Technical:
 
 Deployment process:
 
+
+1. Deploy to stage
+
 ![page1](https://user-images.githubusercontent.com/98649310/152417131-c6de1405-1211-47c7-922a-a1a01ff92b43.JPG)
+
+2.Promote changes to prod
 
 ![page2](https://user-images.githubusercontent.com/98649310/152417165-313a49a6-250a-4348-9daa-7a1881293ca1.jpg)
