@@ -32,5 +32,4 @@ class ExpressionSplitterTest {
         //then
         assertThat(actual).containsExactlyElementsOf(expected);
     }
-
 }

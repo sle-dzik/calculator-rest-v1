@@ -104,5 +104,4 @@ class CalculatorControllerAdviceTest {
         assertThat(body.getError()).isTrue();
         assertThat(body.getResult()).isNull();
     }
-
 }

@@ -9,5 +9,4 @@ class CalculatorApplicationTest {
     @Test
     void contextStartupTest() {
     }
-
 }

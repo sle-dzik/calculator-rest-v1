@@ -68,5 +68,4 @@ class CalculatorTest {
         RuntimeException actualException = assertThrows(RuntimeException.class, () -> calculator.calculate(input));
         assertThat(actualException.getMessage()).isEqualTo(expectedMessage);
     }
-
 }
