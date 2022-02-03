@@ -36,5 +36,4 @@ class DivideOperationTest {
         //when
         Assertions.assertThat(actualException.getMessage()).isEqualTo("Divide by 0 is prohibited");
     }
-
 }
