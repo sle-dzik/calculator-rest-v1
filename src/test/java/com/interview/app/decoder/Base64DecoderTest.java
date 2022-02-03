@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class Base64DecoderTest {
 
-    private Decoder decoder = new Base64Decoder();
+    private final Decoder decoder = new Base64Decoder();
 
     @Test
     void decode_ShouldReturnIllegalArgumentExceptionWhenNullString() {

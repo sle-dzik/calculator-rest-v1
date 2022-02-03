@@ -1,5 +1,6 @@
 package com.interview.app.controller;
 
+import com.interview.app.calculator.CalculatorService;
 import com.interview.app.decoder.DecodeService;
 import com.interview.app.dto.CalculationResult;
 import lombok.AllArgsConstructor;
@@ -17,10 +18,12 @@ import javax.validation.constraints.NotEmpty;
 public class CalculatorController {
 
     private DecodeService decodeService;
+    private CalculatorService calculatorService;
 
     @GetMapping(value = "/calculus", produces = MediaType.APPLICATION_JSON_VALUE)
     public CalculationResult calculate(@RequestParam @NotEmpty(message = "Request query cannot be empty") String query) {
         String decodedQuery = decodeService.decodeBase64(query);
-        return CalculationResult.builder().message(decodedQuery).build();
+        Double result = calculatorService.calculate(decodedQuery);
+        return CalculationResult.builder().result(result).error(false).build();
     }
 }

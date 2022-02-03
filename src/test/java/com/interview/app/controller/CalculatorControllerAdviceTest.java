@@ -39,6 +39,26 @@ class CalculatorControllerAdviceTest {
     }
 
     @Test
+    void handleArithmeticException_ShouldReturnExceptionMessage() {
+        //given
+        String exceptionMessage = "Wrong data";
+        ArithmeticException exception = new ArithmeticException(exceptionMessage);
+
+        //when
+        ResponseEntity<CalculationResult> responseEntity = calculatorControllerAdvice.handleArithmeticException(exception);
+
+        //then
+        assertThat(responseEntity).isNotNull();
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+        CalculationResult body = responseEntity.getBody();
+        assertThat(body).isNotNull();
+        assertThat(body.getMessage()).isEqualTo(exceptionMessage);
+        assertThat(body.getError()).isTrue();
+        assertThat(body.getResult()).isNull();
+    }
+
+    @Test
     void handleValidationException_ShouldReturnDefMessageWhenNoConstraints() {
         //given
         ConstraintViolationException exception = new ConstraintViolationException(Set.of());
@@ -58,7 +78,7 @@ class CalculatorControllerAdviceTest {
     }
 
     @Test
-    void handleValidationException_ShouldReturnFirstConstraintMessage() {
+    void handleValidationException_ShouldReturnAnyOfConstraintMessage() {
         //given
         String exceptionMessage1 = "Wrong parameter 1";
         ConstraintViolation<String> constraintViolation1 = mock(ConstraintViolation.class);
@@ -80,7 +100,7 @@ class CalculatorControllerAdviceTest {
 
         CalculationResult body = responseEntity.getBody();
         assertThat(body).isNotNull();
-        assertThat(body.getMessage()).isEqualTo(exceptionMessage1);
+        assertThat(body.getMessage()).containsAnyOf(exceptionMessage1, exceptionMessage2);
         assertThat(body.getError()).isTrue();
         assertThat(body.getResult()).isNull();
     }

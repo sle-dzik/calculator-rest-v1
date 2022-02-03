@@ -13,13 +13,18 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class CalculatorControllerAdvice extends ResponseEntityExceptionHandler {
 
-    public static String VALIDATION_ERROR_DEFAULT_MESSAGE = "Validation error";
+    public static final String VALIDATION_ERROR_DEFAULT_MESSAGE = "Validation error";
 
     @ExceptionHandler(value = {IllegalArgumentException.class})
     protected ResponseEntity<CalculationResult> handleIllegalArgumentException(IllegalArgumentException ex) {
-        CalculationResult build = buildErrorResponse(ex.getMessage());
         return new ResponseEntity<>(buildErrorResponse(ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {ArithmeticException.class})
+    protected ResponseEntity<CalculationResult> handleArithmeticException(ArithmeticException ex) {
+        return new ResponseEntity<>(buildErrorResponse(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<CalculationResult> handleValidationException(ConstraintViolationException ex) {
