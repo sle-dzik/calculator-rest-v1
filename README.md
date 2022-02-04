@@ -1,7 +1,8 @@
 # calculator-rest-v1
 
 Endpoint: GET /calculus?query=[input]
-input shoul be base64 endoded stirng of math expression like: 2 * (23/(3*3))- 23 * (2*3)
+
+input should be base64 endoded string of math expression like: 2 * (23/(3*3))- 23 * (2*3)
 
 Heroku endpiont:
 https://calculator-rest-v1.herokuapp.com/calculus?query=MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk
