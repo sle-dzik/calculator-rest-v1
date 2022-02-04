@@ -1,5 +1,12 @@
 # calculator-rest-v1
 
+Endpoint: GET /calculus?query=[input]
+input shoul be base64 endoded stirng of math expression like: 2 * (23/(3*3))- 23 * (2*3)
+
+Heroku endpiont:
+https://calculator-rest-v1.herokuapp.com/calculus?query=MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk
+
+
 Calculator assumptions: 
 1. Consume only positive numbers on input, decimal numbers are not allowed
 2. It removes all spaces between numbers. If you provide: [2 2+ 2] calculator understands it as: [22+2]
